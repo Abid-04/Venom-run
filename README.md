@@ -17,7 +17,7 @@ The project demonstrates object-oriented programming, event handling, graphical 
 
 ## Screenshots
 
-*Screenshots will be added here.*
+
 
 ### Main Menu
 
