@@ -31,7 +31,7 @@ public class Menu extends JFrame implements ActionListener,MouseListener{
 	Menu(){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(1400,900);
-		this.setTitle("Menu");
+		this.setTitle("NEW MENU TEST 123");
 		this.setLayout(null);
 		this.getContentPane().setBackground(new Color(179, 230, 181));
 		
@@ -57,6 +57,7 @@ public class Menu extends JFrame implements ActionListener,MouseListener{
 		this.add(info);
 		this.add(exit);
 		this.setVisible(true);
+		
 	}
 	
 	
@@ -66,23 +67,23 @@ public class Menu extends JFrame implements ActionListener,MouseListener{
 
 	//the common specifications among those buttons are written here so that they don't have to be- 
 	//written separately for each button multiple times.
-	public void menuu(JButton btn ) {
-		
-		  btn.setBackground(new Color(0, 0, 0, 45));
-	      btn.setOpaque(true);
-	      btn.setContentAreaFilled(true);
-	      btn.setBorderPainted(true);
-	      btn.setFocusPainted(false);
-	      btn.setForeground(Color.WHITE);
-	      btn.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 25));
-	      btn.setFocusable(false);
-	      btn.addActionListener(this);
-	      btn.addMouseListener(this);
-	      
-	      
-	   
-	      
-	}
+
+public void menuu(JButton btn) {
+
+    btn.setBackground(new Color(220, 220, 220));
+    btn.setForeground(Color.BLACK);
+    btn.setFont(new Font("Dialog", Font.BOLD, 25));
+
+    btn.setOpaque(true);
+    btn.setContentAreaFilled(true);
+    btn.setBorderPainted(true);
+    btn.setFocusPainted(false);
+    btn.setFocusable(false);
+
+    btn.addActionListener(this);
+    btn.addMouseListener(this);
+}
+
 
     
 	@Override
