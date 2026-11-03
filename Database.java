@@ -1,3 +1,4 @@
+
 package snakeGame;
 
 import java.sql.Connection;
@@ -8,51 +9,70 @@ import java.sql.SQLException;
 
 public class Database {
 
-	    private static final String URL = "jdbc:mysql://localhost:3306/snake_game";
-	    private static final String USER = "root"; 
-	    private static final String PASSWORD = "Potsdam@12";
+    private static final String URL =
+        "jdbc:mysql://localhost:3306/snake_game";
 
-	    // Method to create and return a database connection
-	    public static Connection getConnection() throws SQLException {
-	        return DriverManager.getConnection(URL, USER, PASSWORD);
-	    }
-	    
-	    
-	    public static void saveScore(String playerName, int score) {
-	        String sql = "INSERT INTO scores (player_name, score) VALUES (?, ?)";
-	        
-	        try (Connection conn = getConnection();
-	             PreparedStatement stmt = conn.prepareStatement(sql)) {
-	            
-	            stmt.setString(1, playerName); // first ? = playerName
-	            stmt.setInt(2, score);          // second ? = score
-	            
-	            stmt.executeUpdate();           // execute the INSERT command
-	            System.out.println("Score saved!");
-	            
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    
-	    public static int getHighestScore() {
-	        String sql = "SELECT MAX(score) AS max_score FROM scores";
-	        int highest = 0;
+    private static final String USER =
+        System.getenv("DB_USER");
 
-	        try (Connection conn = getConnection();
-	             PreparedStatement stmt = conn.prepareStatement(sql);
-	             ResultSet rs = stmt.executeQuery()) {
+    private static final String PASSWORD =
+        System.getenv("DB_PASSWORD");
 
-	            if (rs.next()) {
-	                highest = rs.getInt("max_score");
-	            }
+    // This is to create and return a database connection
+    public static Connection getConnection() throws SQLException {
 
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
+        if (USER == null || PASSWORD == null) {
+            throw new SQLException(
+                "Missing DB_USER or DB_PASSWORD environment variable."
+            );
+        }
 
-	        return highest;
-	    }
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+
+    // Saving player's score
+    public static void saveScore(String playerName, int score) {
+
+        String sql =
+            "INSERT INTO scores (player_name, score) VALUES (?, ?)";
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, playerName);
+            stmt.setInt(2, score);
+
+            stmt.executeUpdate();
+            System.out.println("Score saved!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // getting the highest score
+    public static int getHighestScore() {
+
+        String sql =
+            "SELECT MAX(score) AS max_score FROM scores";
+
+        int highest = 0;
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+                highest = rs.getInt("max_score");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return highest;
+    }
+}
 
 
 	        
