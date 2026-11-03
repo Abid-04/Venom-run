@@ -15,7 +15,23 @@ The project demonstrates object-oriented programming, event handling, graphical 
 - **Main menu navigation:** Return to the main menu directly from the game screen.
 - **Sound effects and background music:** Audio feedback during gameplay.
 
+
 ## Screenshots
+
+### Main Menu
+![Venom Run Main Menu](screenshots/menu01.png)
+
+### Difficulty Selection
+![Difficulty Selection](screenshots/menu02.png)
+
+### Player Name
+![Player Name Input](screenshots/name_section.png)
+
+### Gameplay
+![Venom Run Gameplay](screenshots/game.png)
+
+### Pause and Resume
+![Pause and Resume](screenshots/game02.png)
 
 
 
