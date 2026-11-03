@@ -54,24 +54,25 @@ public class Level_ extends JFrame implements ActionListener,MouseListener{
 	
 	//the common specifications among those buttons are written here so that they don't have to be- 
 	//written separately for each button multiple times.
-	public void buttons(JButton button) {
-		
-		  button.setBackground(new Color(0, 0, 0, 45));
-	      button.setOpaque(true);
-	      button.setContentAreaFilled(true);
-	      button.setBorderPainted(true);
-	      button.setFocusPainted(false);
-	      button.setForeground(Color.WHITE);
-	      button.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 25));
-	      button.setFocusable(false);
-	      button.addActionListener(this);
-	      button.addMouseListener(this);
-	      
-	      
-	      
-	      click("src//snakeGame//ui-click-43196.wav");
-	      
-	}
+
+   public void buttons(JButton button) {
+
+    button.setBackground(new Color(220, 220, 220));
+    button.setForeground(Color.BLACK);
+    button.setFont(new Font("Dialog", Font.BOLD, 25));
+
+    button.setOpaque(true);
+    button.setContentAreaFilled(true);
+    button.setBorderPainted(true);
+    button.setFocusPainted(false);
+    button.setFocusable(false);
+
+    button.addActionListener(this);
+    button.addMouseListener(this);
+
+    click("src//snakeGame//ui-click-43196.wav");
+}
+
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
